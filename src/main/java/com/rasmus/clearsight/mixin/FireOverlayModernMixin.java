@@ -17,10 +17,23 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class FireOverlayModernMixin {
 
     @Inject(method = "submitFire", at = @At("HEAD"), cancellable = true)
-    private static void skipFireOverlay(PoseStack poseStack, SubmitNodeCollector collector,
+    private static void adjustFireOverlay(PoseStack poseStack, SubmitNodeCollector collector,
             TextureAtlasSprite sprite, CallbackInfo ci) {
-        if (ClearSightConfig.get().hideFireOverlay) {
+        int height = ClearSightConfig.get().fireOverlayHeight;
+        if (height <= 0) {
             ci.cancel();
+        } else if (height < 100) {
+            poseStack.pushPose();
+            poseStack.translate(0.0F, -0.6F * (100 - height) / 100.0F, 0.0F);
+        }
+    }
+
+    @Inject(method = "submitFire", at = @At("RETURN"))
+    private static void restorePose(PoseStack poseStack, SubmitNodeCollector collector,
+            TextureAtlasSprite sprite, CallbackInfo ci) {
+        int height = ClearSightConfig.get().fireOverlayHeight;
+        if (height > 0 && height < 100) {
+            poseStack.popPose();
         }
     }
 }

@@ -21,7 +21,7 @@ public class WeatherTickLegacyMixin {
     @Inject(method = "tickRainParticles", at = @At("HEAD"), cancellable = true)
     private void skipRainParticles(ClientLevel level, Camera camera, int ticks,
             ParticleStatus particleStatus, int intensity, CallbackInfo ci) {
-        if (ClearSightConfig.get().hideWeather) {
+        if (ClearSightConfig.get().hideAllWeather()) {
             ci.cancel();
         }
     }
