@@ -1,0 +1,26 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.rasmus.clearsight.mixin",
+  "plugin": "com.rasmus.clearsight.ClearSightMixinPlugin",
+  "compatibilityLevel": "JAVA_25",
+  "client": [
+    "ClientPacketListenerMixin",
+    "EntityHitboxDebugRendererMixin",
+    "FireworkRocketEntityMixin",
+    "GameRendererMixin",
+    "GuiOverlayMixin",
+    "HudOverlayMixin",
+    "LivingEntityMixin",
+    "WaterFogEnvironmentMixin",
+    "LavaFogEnvironmentMixin",
+    "LeavesBlockMixin",
+    "PowderedSnowFogEnvironmentMixin",
+    "WeatherEffectRendererMixin",
+    "WeatherTickLegacyMixin",
+    "WeatherTickModernMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
