@@ -7,6 +7,8 @@
   "client": [
     "ClientPacketListenerMixin",
     "EntityHitboxDebugRendererMixin",
+    "FireOverlayLegacyMixin",
+    "FireOverlayModernMixin",
     "FireworkRocketEntityMixin",
     "GameRendererMixin",
     "GuiOverlayMixin",

@@ -24,6 +24,8 @@
   "text.autoconfig.clearsight.option.clearLavaFog.@Tooltip": "See while submerged in lava.",
   "text.autoconfig.clearsight.option.clearPowderSnowFog": "Clear Powder Snow Fog",
   "text.autoconfig.clearsight.option.clearPowderSnowFog.@Tooltip": "See while stuck in powder snow.",
+  "text.autoconfig.clearsight.option.hideFireOverlay": "Hide Fire Overlay",
+  "text.autoconfig.clearsight.option.hideFireOverlay.@Tooltip": "Removes the first-person flames while burning. Fire on your body in third person and on other entities still shows, and so do your hearts dropping.",
   "text.autoconfig.clearsight.option.hideTotemAnimation": "Hide Totem Animation",
   "text.autoconfig.clearsight.option.hideTotemAnimation.@Tooltip": "Skips the full-screen totem pop-up and your own green particle burst. The sound and hearts tell the story, and other players popping totems still shows.",
   "text.autoconfig.clearsight.option.hideHurtCam": "Hide Hurt Camera Shake",

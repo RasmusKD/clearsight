@@ -39,6 +39,10 @@ public class ClearSightConfig implements ConfigData {
 
     @ConfigEntry.Category("screen")
     @ConfigEntry.Gui.Tooltip
+    public boolean hideFireOverlay = false;
+
+    @ConfigEntry.Category("screen")
+    @ConfigEntry.Gui.Tooltip
     public boolean hideTotemAnimation = true;
 
     @ConfigEntry.Category("screen")

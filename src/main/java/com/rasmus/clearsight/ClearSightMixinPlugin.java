@@ -34,6 +34,12 @@ public class ClearSightMixinPlugin implements IMixinConfigPlugin {
         if (mixinClassName.endsWith("WeatherTickModernMixin")) {
             return !isLegacyGui();
         }
+        if (mixinClassName.endsWith("FireOverlayLegacyMixin")) {
+            return isLegacyGui();
+        }
+        if (mixinClassName.endsWith("FireOverlayModernMixin")) {
+            return !isLegacyGui();
+        }
         return true;
     }
 

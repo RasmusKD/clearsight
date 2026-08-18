@@ -15,7 +15,7 @@ one is handled. Grow this list with every new find.
 | `Minecraft.setScreen` | exists | removed; only `setScreenAndShow` | Always call `setScreenAndShow` (exists in both) |
 | Entity type constants | statics on `EntityType` (`EntityType.TROPICAL_FISH`) | moved to new `EntityTypes` class | Never reference the statics: `BuiltInRegistries.ENTITY_TYPE.getValue(Identifier)` is identical in both |
 | `GuiGraphicsExtractor.entity(...)` | JOML `Vector3f`/`Quaternionf` params | JOML `Vector3fc`/`Quaternionfc` params (different bytecode descriptor!) | Resolve the method by name + param count via reflection, cache it (rare-fish-finder) |
-| Screen effects (fire/underwater overlay) | `ScreenEffectRenderer.renderScreenEffect` with `renderFire`/`renderWater` helpers | renamed `submit(...)`, helpers inlined/removed | No clean shared target; fire-overlay feature deferred because of this |
+| Screen effect helpers | `ScreenEffectRenderer.renderScreenEffect` + `renderFire`/`renderWater`/`renderTex` | renamed `submit` + `submitFire`/`submitWater`/`submitBlockSprite` (same shapes) | Mixin pair (`FireOverlayLegacyMixin`/`FireOverlayModernMixin`) + plugin |
 | Rain splash particles + rain sound | `WeatherEffectRenderer.tickRainParticles(...)` | moved to `ClientLevel.tickWeatherEffects()` | Mixin pair (`WeatherTickLegacyMixin`/`WeatherTickModernMixin`) + plugin |
 | Gamerule ids (server commands) | camelCase (`doDaylightCycle`, `doWeatherCycle`) | snake_case (`advance_time`, `advance_weather`) | Ops knowledge, not code |
 
