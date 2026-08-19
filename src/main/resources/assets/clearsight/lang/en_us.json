@@ -13,7 +13,7 @@
   "text.autoconfig.clearsight.option.disableNauseaEffect": "Disable Nausea Effect",
   "text.autoconfig.clearsight.option.disableNauseaEffect.@Tooltip": "Removes the nausea screen distortion.",
   "text.autoconfig.clearsight.option.hideEffectParticles": "Hide Effect Particles",
-  "text.autoconfig.clearsight.option.hideEffectParticles.@Tooltip": "Hides potion particles on all entities. Effects still work.",
+  "text.autoconfig.clearsight.option.hideEffectParticles.@Tooltip": "Hides your own potion particles. Effects still work.",
   "text.autoconfig.clearsight.option.clearWaterFog": "Clear Water Fog",
   "text.autoconfig.clearsight.option.clearWaterFog.@Tooltip": "See clearly underwater.",
   "text.autoconfig.clearsight.option.clearLavaFog": "Clear Lava Fog",

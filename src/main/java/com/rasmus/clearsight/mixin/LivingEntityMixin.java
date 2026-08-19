@@ -1,6 +1,7 @@
 package com.rasmus.clearsight.mixin;
 
 import com.rasmus.clearsight.config.ClearSightConfig;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.world.effect.MobEffect;
@@ -41,15 +42,16 @@ public class LivingEntityMixin {
     }
 
     /**
-     * The swirly ambient particles from active effects, on every entity:
-     * players brewing up before a fight, villagers with regeneration, your
-     * own swirls blocking the crosshair. The effect itself is untouched.
+     * The swirly ambient particles from your own active effects, the ones
+     * blocking the crosshair. Other entities keep theirs, so buffs stay
+     * readable in PvP. The effect itself is untouched.
      */
     @Redirect(method = "tickEffects", at = @At(value = "INVOKE",
             target = "Lnet/minecraft/world/level/Level;addParticle(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V"))
     private void skipEffectParticles(Level level, ParticleOptions particle,
             double x, double y, double z, double dx, double dy, double dz) {
-        if (!ClearSightConfig.get().hideEffectParticles || !level.isClientSide()) {
+        if (!ClearSightConfig.get().hideEffectParticles || !level.isClientSide()
+                || (Object) this != Minecraft.getInstance().player) {
             level.addParticle(particle, x, y, z, dx, dy, dz);
         }
     }
