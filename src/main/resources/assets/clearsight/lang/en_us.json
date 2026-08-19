@@ -60,5 +60,5 @@
   "text.autoconfig.clearsight.option.hideWeather": "Hide Rain and Snow",
   "text.autoconfig.clearsight.option.hideWeather.@Tooltip": "Hides the weather completely: rain, snow, splashes, drips and the gloom.",
   "text.autoconfig.clearsight.option.menuPause": "Pause Menu",
-  "text.autoconfig.clearsight.option.menuPause.@Tooltip": "Removes the tint behind the Esc menu. Chat never darkens in vanilla."
+  "text.autoconfig.clearsight.option.menuPause.@Tooltip": "Removes the tint behind the Esc menu."
 }
