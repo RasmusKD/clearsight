@@ -32,7 +32,7 @@
   "text.autoconfig.clearsight.option.hideFrostOverlay": "Skjul frost-overlay",
   "text.autoconfig.clearsight.option.hideFrostOverlay.@Tooltip": "Fjerner frostkanten fra puddersne.",
   "text.autoconfig.clearsight.option.hidePortalOverlay": "Skjul portal-overlay",
-  "text.autoconfig.clearsight.option.hidePortalOverlay.@Tooltip": "Fjerner det lilla svirvl inde i nether-portaler.",
+  "text.autoconfig.clearsight.option.hidePortalOverlay.@Tooltip": "Fjerner det lilla svirvl og skærm-warpen i nether-portaler.",
   "text.autoconfig.clearsight.option.hideSpyglassOverlay": "Skjul kikkert-overlay",
   "text.autoconfig.clearsight.option.hideSpyglassOverlay.@Tooltip": "Fjerner den sorte cirkel når du kigger i kikkerten.",
   "text.autoconfig.clearsight.option.hideSleepOverlay": "Skjul søvn-fade",

@@ -31,7 +31,7 @@
   "text.autoconfig.clearsight.option.hideFrostOverlay": "Hide Frost Overlay",
   "text.autoconfig.clearsight.option.hideFrostOverlay.@Tooltip": "Removes the creeping frost edge from powder snow.",
   "text.autoconfig.clearsight.option.hidePortalOverlay": "Hide Portal Overlay",
-  "text.autoconfig.clearsight.option.hidePortalOverlay.@Tooltip": "Removes the purple swirl inside nether portals.",
+  "text.autoconfig.clearsight.option.hidePortalOverlay.@Tooltip": "Removes the purple swirl and the screen warp inside nether portals.",
   "text.autoconfig.clearsight.option.hideSpyglassOverlay": "Hide Spyglass Overlay",
   "text.autoconfig.clearsight.option.hideSpyglassOverlay.@Tooltip": "Removes the black circle while scoping.",
   "text.autoconfig.clearsight.option.hideSleepOverlay": "Hide Sleep Fade",

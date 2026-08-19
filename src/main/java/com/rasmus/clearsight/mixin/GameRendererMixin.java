@@ -2,12 +2,15 @@ package com.rasmus.clearsight.mixin;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.rasmus.clearsight.config.ClearSightConfig;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.world.item.ItemStack;
+import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(GameRenderer.class)
@@ -31,5 +34,25 @@ public class GameRendererMixin {
         if (ClearSightConfig.get().hideHurtCam) {
             ci.cancel();
         }
+    }
+
+    /**
+     * Standing in a nether portal drives the same spinning screen warp as
+     * nausea, fed by the portal intensity read here in tick (speed) and
+     * renderLevel (application). Zeroing the reads removes the warp; the
+     * nausea-driven warp has its own toggle and is untouched.
+     */
+    @Redirect(method = {"tick", "renderLevel"}, at = @At(value = "FIELD",
+            target = "Lnet/minecraft/client/player/LocalPlayer;portalEffectIntensity:F",
+            opcode = Opcodes.GETFIELD))
+    private float zeroPortalSpin(LocalPlayer player) {
+        return ClearSightConfig.get().hidePortalOverlay ? 0.0F : player.portalEffectIntensity;
+    }
+
+    @Redirect(method = "renderLevel", at = @At(value = "FIELD",
+            target = "Lnet/minecraft/client/player/LocalPlayer;oPortalEffectIntensity:F",
+            opcode = Opcodes.GETFIELD))
+    private float zeroOldPortalSpin(LocalPlayer player) {
+        return ClearSightConfig.get().hidePortalOverlay ? 0.0F : player.oPortalEffectIntensity;
     }
 }
