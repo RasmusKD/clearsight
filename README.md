@@ -1,17 +1,26 @@
 # Clear Sight
 
-Client-side Fabric mod that removes the Warden darkness effect: both the
-closing fog and the screen dimming, so ancient cities stay visible.
+Client-side Fabric mod that removes things that block your view. Every
+removal is its own toggle in Mod Menu > Clear Sight, so you pick exactly
+what goes. Nothing duplicates a vanilla option.
 
-Also hides the swirly effect particles on every entity and skips the
-full-screen totem animation (both on by default). More toggles, off by
-default: blindness, water/lava/powder snow fog, hurt camera shake, pumpkin
-blur, frost edge, portal swirl and the elytra firework trail. Everything is
-in Mod Menu > Clear Sight, with optional keybinds for the fog toggles.
+## Toggles
 
-Vanilla already has a vignette option (Video Settings) and a darkness
-pulsing slider (Accessibility), so those are not duplicated here.
+- Effects: Warden darkness (fog + dimming, on by default), blindness fog,
+  nausea distortion, your own potion particles (on by default)
+- Fog: clear water, lava and powder snow fog
+- Screen: totem pop-up and burst (on by default), fire overlay height
+  slider, hurt camera shake, pumpkin blur, frost edge, portal swirl and
+  warp, spyglass circle, sleep fade
+- Menus: the dark tint behind menus, per kind (inventory, chests,
+  workstations, villager trading, signs and books, pause menu, the rest)
+- World: rain and snow (splashes, leaf drips and sky gloom included),
+  elytra firework trail, boss fight darkening, F3+B sight lines
+
+Vanilla already has options for vignette, darkness pulsing, FOV effects,
+clouds, menu blur and lightning flashes, so those are not duplicated here.
 
 ## Requirements
 
-Minecraft 26.1+, Fabric API and Cloth Config. Mod Menu recommended.
+Minecraft 26.1+, Fabric API and Cloth Config. Mod Menu recommended, or
+bind the open-config key in Controls.
