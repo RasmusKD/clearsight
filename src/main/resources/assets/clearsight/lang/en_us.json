@@ -1,10 +1,6 @@
 {
   "key.category.clearsight.category": "Clear Sight",
-  "key.clearsight.darkness": "Toggle Darkness Removal",
-  "key.clearsight.blindness": "Toggle Blindness Removal",
-  "key.clearsight.waterfog": "Toggle Water Fog",
-  "key.clearsight.lavafog": "Toggle Lava Fog",
-  "key.clearsight.powdersnowfog": "Toggle Powder Snow Fog",
+  "key.clearsight.config": "Open Config",
   "text.autoconfig.clearsight.title": "Clear Sight Configuration",
   "text.autoconfig.clearsight.category.effects": "Effects",
   "text.autoconfig.clearsight.category.fog": "Fog",
