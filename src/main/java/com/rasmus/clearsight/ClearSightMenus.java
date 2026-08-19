@@ -25,9 +25,6 @@ public final class ClearSightMenus {
 
     public static boolean shouldHideDarkening(Screen screen) {
         ClearSightConfig config = ClearSightConfig.get();
-        if (!config.hideMenuDarkening) {
-            return false;
-        }
         if (screen instanceof InventoryScreen || screen instanceof CreativeModeInventoryScreen) {
             return config.menuInventory;
         }

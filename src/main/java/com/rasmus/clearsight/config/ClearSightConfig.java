@@ -74,35 +74,31 @@ public class ClearSightConfig implements ConfigData {
 
     @ConfigEntry.Category("menus")
     @ConfigEntry.Gui.Tooltip
-    public boolean hideMenuDarkening = false;
+    public boolean menuInventory = false;
 
     @ConfigEntry.Category("menus")
     @ConfigEntry.Gui.Tooltip
-    public boolean menuInventory = true;
+    public boolean menuStorage = false;
 
     @ConfigEntry.Category("menus")
     @ConfigEntry.Gui.Tooltip
-    public boolean menuStorage = true;
+    public boolean menuWorkstations = false;
 
     @ConfigEntry.Category("menus")
     @ConfigEntry.Gui.Tooltip
-    public boolean menuWorkstations = true;
+    public boolean menuVillager = false;
 
     @ConfigEntry.Category("menus")
     @ConfigEntry.Gui.Tooltip
-    public boolean menuVillager = true;
+    public boolean menuSignsBooks = false;
 
     @ConfigEntry.Category("menus")
     @ConfigEntry.Gui.Tooltip
-    public boolean menuSignsBooks = true;
+    public boolean menuPause = false;
 
     @ConfigEntry.Category("menus")
     @ConfigEntry.Gui.Tooltip
-    public boolean menuPause = true;
-
-    @ConfigEntry.Category("menus")
-    @ConfigEntry.Gui.Tooltip
-    public boolean menuOther = true;
+    public boolean menuOther = false;
 
     @ConfigEntry.Category("world")
     @ConfigEntry.Gui.Tooltip
