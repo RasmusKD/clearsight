@@ -19,7 +19,7 @@ public class WeatherEffectRendererMixin {
     @Inject(method = "render", at = @At("HEAD"), cancellable = true)
     private void skipWeatherRendering(Vec3 cameraPosition, WeatherRenderState renderState,
             CallbackInfo ci) {
-        if (ClearSightConfig.get().hideFallingWeather()) {
+        if (ClearSightConfig.get().hideWeather) {
             ci.cancel();
         }
     }

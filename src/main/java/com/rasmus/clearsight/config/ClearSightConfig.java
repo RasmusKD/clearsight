@@ -1,7 +1,6 @@
 package com.rasmus.clearsight.config;
 
 import me.shedaniel.autoconfig.AutoConfig;
-import net.minecraft.client.Minecraft;
 import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
@@ -107,31 +106,6 @@ public class ClearSightConfig implements ConfigData {
     @ConfigEntry.Category("world")
     @ConfigEntry.Gui.Tooltip
     public boolean hideWeather = false;
-
-    @ConfigEntry.Category("world")
-    @ConfigEntry.Gui.Tooltip
-    public boolean showWeatherWhileFishing = true;
-
-    public boolean hideFallingWeather() {
-        return hideWeather && !fishingException();
-    }
-
-    public boolean hideAllWeather() {
-        return hideWeather && !fishingException();
-    }
-
-    /**
-     * Rain speeds up fishing, so while the bobber is out the weather is
-     * information the player asked for. The exception suspends every
-     * weather removal until the line is reeled in.
-     */
-    private boolean fishingException() {
-        if (!showWeatherWhileFishing) {
-            return false;
-        }
-        var player = Minecraft.getInstance().player;
-        return player != null && player.fishing != null;
-    }
 
     @ConfigEntry.Category("world")
     @ConfigEntry.Gui.Tooltip

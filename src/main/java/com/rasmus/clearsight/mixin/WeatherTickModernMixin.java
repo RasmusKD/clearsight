@@ -14,7 +14,7 @@ public class WeatherTickModernMixin {
 
     @Inject(method = "tickWeatherEffects", at = @At("HEAD"), cancellable = true)
     private void skipRainParticles(CallbackInfo ci) {
-        if (ClearSightConfig.get().hideAllWeather()) {
+        if (ClearSightConfig.get().hideWeather) {
             ci.cancel();
         }
     }

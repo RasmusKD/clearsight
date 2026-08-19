@@ -58,7 +58,5 @@
   "text.autoconfig.clearsight.option.menuOther": "Alt andet",
   "text.autoconfig.clearsight.option.menuOther.@Tooltip": "Fjerner tonen bag alle andre skærme, også fra mods.",
   "text.autoconfig.clearsight.option.hideWeather": "Skjul regn og sne",
-  "text.autoconfig.clearsight.option.hideWeather.@Tooltip": "Skjuler vejret helt: regn, sne, plask, dryp og det grå lys.",
-  "text.autoconfig.clearsight.option.showWeatherWhileFishing": "Vis vejr mens du fisker",
-  "text.autoconfig.clearsight.option.showWeatherWhileFishing.@Tooltip": "Regn giver hurtigere bid, så vejret vises mens din prop er ude."
+  "text.autoconfig.clearsight.option.hideWeather.@Tooltip": "Skjuler vejret helt: regn, sne, plask, dryp og det grå lys."
 }

@@ -18,7 +18,7 @@ public class AtmosphericFogEnvironmentMixin {
     @Inject(method = "applyWeatherDarken", at = @At("HEAD"), cancellable = true)
     private static void skipWeatherDarken(int color, float rainLevel, float thunderLevel,
             CallbackInfoReturnable<Integer> cir) {
-        if (ClearSightConfig.get().hideAllWeather()) {
+        if (ClearSightConfig.get().hideWeather) {
             cir.setReturnValue(color);
         }
     }

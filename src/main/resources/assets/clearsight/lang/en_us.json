@@ -55,8 +55,6 @@
   "text.autoconfig.clearsight.option.menuSignsBooks.@Tooltip": "Removes the tint behind sign editing, books and lecterns.",
   "text.autoconfig.clearsight.option.menuOther": "Everything Else",
   "text.autoconfig.clearsight.option.menuOther.@Tooltip": "Removes the tint behind any other screen, including modded ones.",
-  "text.autoconfig.clearsight.option.showWeatherWhileFishing": "Show Weather While Fishing",
-  "text.autoconfig.clearsight.option.showWeatherWhileFishing.@Tooltip": "Rain means faster bites, so the weather shows while your bobber is out.",
   "text.autoconfig.clearsight.option.hideWeather": "Hide Rain and Snow",
   "text.autoconfig.clearsight.option.hideWeather.@Tooltip": "Hides the weather completely: rain, snow, splashes, drips and the gloom.",
   "text.autoconfig.clearsight.option.menuPause": "Pause Menu",

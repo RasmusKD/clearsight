@@ -22,7 +22,7 @@ public class LeavesBlockMixin {
     @Inject(method = "makeDrippingWaterParticles", at = @At("HEAD"), cancellable = true)
     private static void skipRainDrips(Level level, BlockPos pos, RandomSource random,
             BlockState state, BlockPos belowPos, CallbackInfo ci) {
-        if (ClearSightConfig.get().hideAllWeather()) {
+        if (ClearSightConfig.get().hideWeather) {
             ci.cancel();
         }
     }
