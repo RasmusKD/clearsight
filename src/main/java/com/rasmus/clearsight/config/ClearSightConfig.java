@@ -43,7 +43,7 @@ public class ClearSightConfig implements ConfigData {
     public boolean clearNetherFog = false;
 
     @ConfigEntry.Category("loading")
-    @ConfigEntry.Gui.Tooltip
+    @ConfigEntry.Gui.Tooltip(count = 2)
     public boolean instantResourceReload = false;
 
     @ConfigEntry.Category("loading")
@@ -51,11 +51,11 @@ public class ClearSightConfig implements ConfigData {
     public boolean hideTitleFade = false;
 
     @ConfigEntry.Category("loading")
-    @ConfigEntry.Gui.Tooltip
+    @ConfigEntry.Gui.Tooltip(count = 2)
     public boolean hideWorldLoadScreen = false;
 
     @ConfigEntry.Category("loading")
-    @ConfigEntry.Gui.Tooltip
+    @ConfigEntry.Gui.Tooltip(count = 2)
     public boolean seamlessServerSwitch = false;
 
     @ConfigEntry.Category("screen")

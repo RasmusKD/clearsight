@@ -1,5 +1,7 @@
 package com.rasmus.clearsight.mixin;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.rasmus.clearsight.LoadingGate;
 import com.rasmus.clearsight.config.ClearSightConfig;
 import net.minecraft.client.Minecraft;
@@ -13,7 +15,6 @@ import net.minecraft.world.entity.Entity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 /**
@@ -23,16 +24,18 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(ClientPacketListener.class)
 public class ClientPacketListenerMixin {
 
-    @Redirect(method = "handleEntityEvent", at = @At(value = "INVOKE",
+    // WrapOperation instead of Redirect: two mods redirecting the same
+    // call is a launch crash, wraps chain.
+    @WrapOperation(method = "handleEntityEvent", at = @At(value = "INVOKE",
             target = "Lnet/minecraft/client/particle/ParticleEngine;createTrackingEmitter(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/core/particles/ParticleOptions;I)V"))
     private void skipOwnTotemBurst(ParticleEngine engine, Entity entity,
-            ParticleOptions particle, int count) {
+            ParticleOptions particle, int count, Operation<Void> original) {
         if (particle == ParticleTypes.TOTEM_OF_UNDYING
                 && ClearSightConfig.get().hideTotemAnimation
                 && entity == Minecraft.getInstance().getCameraEntity()) {
             return;
         }
-        engine.createTrackingEmitter(entity, particle, count);
+        original.call(engine, entity, particle, count);
     }
 
     // Only handleRespawn means a respawn or dimension change, and only one
