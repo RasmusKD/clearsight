@@ -29,4 +29,15 @@ public final class ClearSightFog {
         fogData.environmentalStart = FAR_AWAY;
         fogData.environmentalEnd = FAR_AWAY + 1.0F;
     }
+
+    /**
+     * The render-distance planes are rewritten by FogRenderer.setupFog
+     * AFTER every fog environment has run, so clearing them only works
+     * from a hook on that method's return; writes from the environment
+     * hooks are dead stores.
+     */
+    public static void clearRenderDistance(FogData fogData) {
+        fogData.renderDistanceStart = FAR_AWAY;
+        fogData.renderDistanceEnd = FAR_AWAY + 1.0F;
+    }
 }

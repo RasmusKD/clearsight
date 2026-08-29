@@ -8,14 +8,15 @@ what goes. Nothing duplicates a vanilla option.
 
 - Effects: Warden darkness (fog + dimming, on by default), blindness fog,
   nausea distortion, your own potion particles (on by default)
-- Fog: clear water, lava, powder snow and nether fog
+- Fog: clear water, lava, powder snow, nether and distance fog
 - Loading: instant resource loading (startup and reloads), no title
   fade-in, hide the loading screen on respawn and dimension change,
   seamless server switch (a frozen view of the world instead of the
   reconfiguration screen)
-- Screen: totem pop-up and burst (on by default), fire overlay height
-  slider, hurt camera shake, pumpkin blur, frost edge, portal swirl and
-  warp, spyglass circle, sleep fade
+- Screen: totem pop-up and burst (on by default), fire overlay and
+  raised shield height sliders, fire overlay off under Fire Resistance,
+  hurt camera shake, pumpkin blur, frost edge, portal swirl and warp,
+  spyglass circle, sleep fade
 - Menus: the dark tint behind menus, per kind (inventory, chests,
   workstations, villager trading, signs and books, pause menu, the rest)
 - World: rain and snow (splashes, leaf drips and sky gloom included),

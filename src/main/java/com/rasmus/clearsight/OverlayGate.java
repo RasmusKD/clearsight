@@ -1,7 +1,10 @@
 package com.rasmus.clearsight;
 
 import com.rasmus.clearsight.config.ClearSightConfig;
+import net.minecraft.client.Minecraft;
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.player.Player;
 
 /**
  * Shared identifier sniffing for the camera texture overlays. Everything the
@@ -12,6 +15,21 @@ import net.minecraft.resources.Identifier;
 public final class OverlayGate {
 
     private OverlayGate() {
+    }
+
+    /**
+     * The effective fire overlay height: the slider, or 0 while Fire
+     * Resistance runs and the flames are pure noise, if that toggle is on.
+     */
+    public static int fireOverlayHeight() {
+        ClearSightConfig config = ClearSightConfig.get();
+        if (config.hideFireWhenResistant) {
+            Player player = Minecraft.getInstance().player;
+            if (player != null && player.hasEffect(MobEffects.FIRE_RESISTANCE)) {
+                return 0;
+            }
+        }
+        return config.fireOverlayHeight;
     }
 
     public static boolean shouldHide(Identifier texture) {

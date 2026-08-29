@@ -42,6 +42,10 @@ public class ClearSightConfig implements ConfigData {
     @ConfigEntry.Gui.Tooltip
     public boolean clearNetherFog = false;
 
+    @ConfigEntry.Category("fog")
+    @ConfigEntry.Gui.Tooltip
+    public boolean clearDistanceFog = false;
+
     @ConfigEntry.Category("loading")
     @ConfigEntry.Gui.Tooltip(count = 2)
     public boolean instantResourceReload = false;
@@ -62,6 +66,15 @@ public class ClearSightConfig implements ConfigData {
     @ConfigEntry.BoundedDiscrete(min = 0, max = 100)
     @ConfigEntry.Gui.Tooltip
     public int fireOverlayHeight = 100;
+
+    @ConfigEntry.Category("screen")
+    @ConfigEntry.Gui.Tooltip
+    public boolean hideFireWhenResistant = false;
+
+    @ConfigEntry.Category("screen")
+    @ConfigEntry.BoundedDiscrete(min = 0, max = 100)
+    @ConfigEntry.Gui.Tooltip
+    public int shieldHeight = 100;
 
     @ConfigEntry.Category("screen")
     @ConfigEntry.Gui.Tooltip

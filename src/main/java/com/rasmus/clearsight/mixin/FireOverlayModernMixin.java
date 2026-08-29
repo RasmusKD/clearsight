@@ -1,7 +1,6 @@
 package com.rasmus.clearsight.mixin;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.rasmus.clearsight.config.ClearSightConfig;
 import net.minecraft.client.renderer.ScreenEffectRenderer;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
@@ -19,7 +18,7 @@ public class FireOverlayModernMixin {
     @Inject(method = "submitFire", at = @At("HEAD"), cancellable = true)
     private static void adjustFireOverlay(PoseStack poseStack, SubmitNodeCollector collector,
             TextureAtlasSprite sprite, CallbackInfo ci) {
-        int height = ClearSightConfig.get().fireOverlayHeight;
+        int height = com.rasmus.clearsight.OverlayGate.fireOverlayHeight();
         if (height <= 0) {
             ci.cancel();
         } else if (height < 100) {
@@ -31,7 +30,7 @@ public class FireOverlayModernMixin {
     @Inject(method = "submitFire", at = @At("RETURN"))
     private static void restorePose(PoseStack poseStack, SubmitNodeCollector collector,
             TextureAtlasSprite sprite, CallbackInfo ci) {
-        int height = ClearSightConfig.get().fireOverlayHeight;
+        int height = com.rasmus.clearsight.OverlayGate.fireOverlayHeight();
         if (height > 0 && height < 100) {
             poseStack.popPose();
         }

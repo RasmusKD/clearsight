@@ -34,12 +34,18 @@ public class AtmosphericFogEnvironmentMixin {
      * The nether's thick fog is this same environment fed shorter
      * FOG_START/END_DISTANCE attributes by the dimension and its biomes
      * (basalt deltas shortest), so clearing the environmental planes here
-     * covers every nether biome in one place.
+     * covers every nether biome in one place. Distance fog removal clears
+     * the environmental planes in every dimension; the render-distance
+     * planes are handled in FogRendererMixin, which runs after vanilla
+     * rewrites them.
      */
     @Inject(method = "setupFog", at = @At("TAIL"))
-    private void clearNetherFog(FogData fogData, Camera camera, ClientLevel level,
+    private void clearFog(FogData fogData, Camera camera, ClientLevel level,
             float renderDistance, DeltaTracker deltaTracker, CallbackInfo ci) {
-        if (ClearSightConfig.get().clearNetherFog && level.dimension() == Level.NETHER) {
+        ClearSightConfig config = ClearSightConfig.get();
+        if (config.clearDistanceFog) {
+            ClearSightFog.clear(fogData);
+        } else if (config.clearNetherFog && level.dimension() == Level.NETHER) {
             ClearSightFog.clearEnvironmental(fogData);
         }
     }
