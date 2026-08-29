@@ -42,6 +42,18 @@ public class ClearSightConfig implements ConfigData {
     @ConfigEntry.Gui.Tooltip
     public boolean clearNetherFog = false;
 
+    @ConfigEntry.Category("loading")
+    @ConfigEntry.Gui.Tooltip
+    public boolean instantResourceReload = false;
+
+    @ConfigEntry.Category("loading")
+    @ConfigEntry.Gui.Tooltip
+    public boolean hideWorldLoadScreen = false;
+
+    @ConfigEntry.Category("loading")
+    @ConfigEntry.Gui.Tooltip
+    public boolean hideTitleFade = false;
+
     @ConfigEntry.Category("screen")
     @ConfigEntry.BoundedDiscrete(min = 0, max = 100)
     @ConfigEntry.Gui.Tooltip

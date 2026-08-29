@@ -9,6 +9,8 @@ what goes. Nothing duplicates a vanilla option.
 - Effects: Warden darkness (fog + dimming, on by default), blindness fog,
   nausea distortion, your own potion particles (on by default)
 - Fog: clear water, lava, powder snow and nether fog
+- Loading: instant resource reloads, hide the loading screen on respawn
+  and dimension change, no title fade-in
 - Screen: totem pop-up and burst (on by default), fire overlay height
   slider, hurt camera shake, pumpkin blur, frost edge, portal swirl and
   warp, spyglass circle, sleep fade

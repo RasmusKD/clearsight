@@ -20,8 +20,30 @@ public class ClearSightMixinPlugin implements IMixinConfigPlugin {
         return version.startsWith("26.1");
     }
 
+    /**
+     * The loading hooks are cosmetic, so their correct failure mode on an
+     * unknown future MC version is silently off, not a launch crash; within
+     * the supported window they still hard-fail via defaultRequire. They
+     * also step aside entirely when a dedicated loading-screen mod is
+     * present instead of fighting it for the same screens.
+     */
+    private static boolean loadingHooksActive() {
+        String version = FabricLoader.getInstance().getModContainer("minecraft")
+                .map(c -> c.getMetadata().getVersion().getFriendlyString()).orElse("");
+        boolean knownVersion = version.startsWith("26.1") || version.startsWith("26.2");
+        boolean rivalLoaded = FabricLoader.getInstance().isModLoaded("forcecloseworldloadingscreen")
+                || FabricLoader.getInstance().isModLoaded("fastload")
+                || FabricLoader.getInstance().isModLoaded("rrls");
+        return knownVersion && !rivalLoaded;
+    }
+
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
+        if (mixinClassName.endsWith("LoadingOverlayMixin")
+                || mixinClassName.endsWith("LevelLoadingScreenMixin")
+                || mixinClassName.endsWith("TitleScreenMixin")) {
+            return loadingHooksActive();
+        }
         if (mixinClassName.endsWith("GuiOverlayMixin")) {
             return isLegacyGui();
         }
