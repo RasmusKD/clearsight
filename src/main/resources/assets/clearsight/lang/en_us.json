@@ -31,6 +31,8 @@
   "text.autoconfig.clearsight.option.titleFadeTime.@Tooltip": "The title screen's fade-in after launch. 100 = vanilla, 0 = full brightness immediately.",
   "text.autoconfig.clearsight.option.hideWorldLoadScreen": "Hide World Loading Screen",
   "text.autoconfig.clearsight.option.hideWorldLoadScreen.@Tooltip": "Respawns and dimension changes show the world loading in instead of the loading screen. Joining a world still shows it, and it comes back if a load stops making progress.",
+  "text.autoconfig.clearsight.option.seamlessServerSwitch": "Seamless Server Switch",
+  "text.autoconfig.clearsight.option.seamlessServerSwitch.@Tooltip": "Server transfers show a frozen view of the world instead of the reconfiguration screen. Its text and disconnect button come back if the switch takes long.",
   "text.autoconfig.clearsight.option.fireOverlayHeight": "Fire Overlay Height",
   "text.autoconfig.clearsight.option.fireOverlayHeight.@Tooltip": "100 = vanilla, 0 = hidden, in between shifts the flames down.",
   "text.autoconfig.clearsight.option.hideTotemAnimation": "Hide Totem Animation",

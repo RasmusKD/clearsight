@@ -20,6 +20,8 @@
   "text.autoconfig.clearsight.option.titleFadeTime.@Tooltip": "Titelskærmens indtoning efter opstart. 100 = vanilla, 0 = fuld lysstyrke med det samme.",
   "text.autoconfig.clearsight.option.hideWorldLoadScreen": "Skjul verdensindlæsningsskærm",
   "text.autoconfig.clearsight.option.hideWorldLoadScreen.@Tooltip": "Respawn og dimensionsskift viser verdenen indlæse i stedet for indlæsningsskærmen. Første tilslutning viser den stadig, og den kommer tilbage hvis en indlæsning går i stå.",
+  "text.autoconfig.clearsight.option.seamlessServerSwitch": "Sømløst serverskift",
+  "text.autoconfig.clearsight.option.seamlessServerSwitch.@Tooltip": "Serverskift viser et fastfrosset billede af verdenen i stedet for omkonfigurationsskærmen. Dens tekst og afbryd-knap vender tilbage hvis skiftet trækker ud.",
   "text.autoconfig.clearsight.option.disableDarknessEffect": "Fjern mørke-effekten",
   "text.autoconfig.clearsight.option.disableDarknessEffect.@Tooltip": "Fjerner wardens mørke: tågen og skærmdæmpningen.",
   "text.autoconfig.clearsight.option.disableBlindnessEffect": "Fjern blindhed",

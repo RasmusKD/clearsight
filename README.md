@@ -11,7 +11,8 @@ what goes. Nothing duplicates a vanilla option.
 - Fog: clear water, lava, powder snow and nether fog
 - Loading: fade time sliders for the startup overlay, resource reloads
   and the title screen (100 = vanilla, 0 = instant), hide the loading
-  screen on respawn and dimension change
+  screen on respawn and dimension change, seamless server switch (a
+  frozen view of the world instead of the reconfiguration screen)
 - Screen: totem pop-up and burst (on by default), fire overlay height
   slider, hurt camera shake, pumpkin blur, frost edge, portal swirl and
   warp, spyglass circle, sleep fade

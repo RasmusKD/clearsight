@@ -20,6 +20,15 @@ public final class LoadingGate {
 
     public static final long STALL_BUDGET_MS = 10_000L;
 
+    /**
+     * Written by ClearSightMixinPlugin at mixin-application time (this
+     * class has no Minecraft imports, so loading it that early is safe):
+     * false when the frozen-frame mixins were gated off (rival mod or
+     * unknown MC version), so the capture hook in the always-applied
+     * packet mixin does not burn textures nothing will draw or release.
+     */
+    public static volatile boolean frozenFrameActive = false;
+
     public static volatile boolean hideLevelLoad = false;
     public static volatile boolean worldReady = false;
     public static volatile float lastProgress = -1.0F;

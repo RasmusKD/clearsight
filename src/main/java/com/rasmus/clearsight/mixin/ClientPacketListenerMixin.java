@@ -51,5 +51,14 @@ public class ClientPacketListenerMixin {
     private void markFreshJoin(ClientboundLoginPacket packet, CallbackInfo ci) {
         LoadingGate.hideLevelLoad = false;
         LoadingGate.worldReady = false;
+        // Proxy servers can send a second login packet with no
+        // reconfiguration phase between worlds; this is the last chance to
+        // grab the old world before it is torn down. Render thread only:
+        // the netty-thread pass must not touch the GPU.
+        Minecraft minecraft = Minecraft.getInstance();
+        if (LoadingGate.frozenFrameActive && ClearSightConfig.get().seamlessServerSwitch
+                && minecraft.isSameThread() && minecraft.level != null) {
+            com.rasmus.clearsight.FrozenFrame.capture();
+        }
     }
 }

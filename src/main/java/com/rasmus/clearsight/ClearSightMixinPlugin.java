@@ -54,6 +54,17 @@ public class ClearSightMixinPlugin implements IMixinConfigPlugin {
         if (mixinClassName.endsWith("LevelLoadingScreenMixin")) {
             return knownLoadingVersion() && !forceCloseLoaded();
         }
+        // kennytv's mod replaces the reconfiguration screen with its own
+        // bridge and does its own frame capturing; ours would be inert
+        // beside it but still burn a texture per transfer. The flag also
+        // reaches the capture hook living in the always-applied packet
+        // mixin, which this gate cannot switch off.
+        if (mixinClassName.endsWith("MinecraftMixin")
+                || mixinClassName.endsWith("ReconfigFreezeMixin")) {
+            boolean active = knownLoadingVersion() && !forceCloseLoaded();
+            com.rasmus.clearsight.LoadingGate.frozenFrameActive = active;
+            return active;
+        }
         if (mixinClassName.endsWith("TitleScreenMixin")) {
             return knownLoadingVersion();
         }
