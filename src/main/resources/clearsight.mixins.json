@@ -16,7 +16,6 @@
     "GameRendererMixin",
     "GuiOverlayMixin",
     "HudOverlayMixin",
-    "LandingParticleFixMixin",
     "LavaFogEnvironmentMixin",
     "LeavesBlockMixin",
     "LivingEntityMixin",
