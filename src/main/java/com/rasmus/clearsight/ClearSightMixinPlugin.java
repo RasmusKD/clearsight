@@ -40,12 +40,13 @@ public class ClearSightMixinPlugin implements IMixinConfigPlugin {
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
         // Rival gating is per hook, matched to what each rival actually
-        // touches. rrls owns the reload overlay's fade clocks (its easing
-        // reads the very timestamps we backdate) but never touches the
-        // level loading screen, so only the overlay hook yields to it.
-        // kennytv's mod covers both screens. The title hook stays on
-        // always: both rivals leave the real TitleScreen fading field in a
-        // state our idempotent write cannot corrupt.
+        // touches. rrls owns the reload overlay's fade constants (it
+        // ModifyConstants the same inlined literals at priority 999, which
+        // would consume them before our require=1 injectors and crash) but
+        // never touches the level loading screen, so only the overlay hook
+        // yields to it. kennytv's mod covers both screens. The title hook
+        // stays on always: both rivals leave the real TitleScreen in a
+        // state our scaling cannot corrupt.
         if (mixinClassName.endsWith("LoadingOverlayMixin")) {
             return knownLoadingVersion() && !forceCloseLoaded()
                     && !FabricLoader.getInstance().isModLoaded("rrls");

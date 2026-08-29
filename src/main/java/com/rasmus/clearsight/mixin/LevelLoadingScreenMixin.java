@@ -20,17 +20,32 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(LevelLoadingScreen.class)
 public class LevelLoadingScreenMixin {
 
+    @org.spongepowered.asm.mixin.Shadow
+    private float smoothedProgress;
+
     // The level != null guard is the last line of defense for a stale gate
     // (a disconnect mid-transition never reaches onClose): singleplayer
     // world loads show this screen before any level exists, and nothing may
     // ever be hidden while there is provably nothing to show behind it.
-    // The time budget brings the vanilla screen back when a load stalls
-    // server-side, so the stall is visible instead of an invisible screen
-    // holding dead keys with no explanation.
-    private static boolean clearsight$hidden() {
-        return ClearSightConfig.get().hideWorldLoadScreen && LoadingGate.hideLevelLoad
-                && net.minecraft.client.Minecraft.getInstance().level != null
-                && net.minecraft.util.Util.getMillis() - LoadingGate.raisedAt < LoadingGate.HIDE_BUDGET_MS;
+    // The stall budget is progress-based: rising smoothedProgress keeps
+    // resetting the clock, so only a load whose progress stands still past
+    // the budget gets the vanilla screen back.
+    private boolean clearsight$hidden() {
+        if (!ClearSightConfig.get().hideWorldLoadScreen || !LoadingGate.hideLevelLoad
+                || net.minecraft.client.Minecraft.getInstance().level == null) {
+            return false;
+        }
+        long now = net.minecraft.util.Util.getMillis();
+        // Movement in EITHER direction counts as activity: vanilla reuses
+        // the screen instance for back-to-back transitions, so a new load
+        // starts with smoothedProgress still high from the previous one
+        // and decays before it climbs. Only a value standing still means
+        // a stall.
+        if (Math.abs(this.smoothedProgress - LoadingGate.lastProgress) > 0.001F) {
+            LoadingGate.lastProgress = this.smoothedProgress;
+            LoadingGate.lastProgressAt = now;
+        }
+        return now - LoadingGate.lastProgressAt < LoadingGate.STALL_BUDGET_MS;
     }
 
     @Inject(method = "extractRenderState", at = @At("HEAD"), cancellable = true)

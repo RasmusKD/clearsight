@@ -1,22 +1,21 @@
 package com.rasmus.clearsight.mixin;
 
 import com.rasmus.clearsight.config.ClearSightConfig;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.LoadingOverlay;
-import net.minecraft.util.Util;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.Constant;
+import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 /**
- * Backdating vanilla's own fade timestamps is the whole mechanism: the fade
- * math sees an animation that already finished, so the overlay draws at
- * full alpha from the first frame, the one-second minimum hold is already
- * satisfied, and vanilla's own tick error handling and removal branch run
- * untouched. Nothing here closes or removes anything itself.
+ * Scales vanilla's own fade durations instead of skipping code: the fade
+ * math, the tick error handling, and the removal branch all run untouched,
+ * just against shorter time spans. 100 = vanilla, 0 = the overlay closes
+ * within a frame or two of the reload being done. The boot overlay
+ * (fadeIn=false, no fade-in
+ * and no minimum hold in vanilla) and manual reloads (fadeIn=true) get
+ * separate sliders, told apart by the fadeIn field.
  */
 @Mixin(LoadingOverlay.class)
 public class LoadingOverlayMixin {
@@ -24,28 +23,26 @@ public class LoadingOverlayMixin {
     @Shadow
     @Final
     private boolean fadeIn;
-    @Shadow
-    private long fadeInStart;
-    @Shadow
-    private long fadeOutStart;
 
-    @Inject(method = "extractRenderState", at = @At("HEAD"))
-    private void skipFadeIn(GuiGraphicsExtractor extractor, int width, int height,
-            float partialTick, CallbackInfo ci) {
-        if (ClearSightConfig.get().instantResourceReload && this.fadeIn
-                && (this.fadeInStart == -1L || Util.getMillis() - this.fadeInStart < 1000L)) {
-            this.fadeInStart = Util.getMillis() - 1000L;
-        }
+    private float clearsight$scale() {
+        ClearSightConfig config = ClearSightConfig.get();
+        return (this.fadeIn ? config.reloadFadeTime : config.bootFadeTime) / 100.0F;
     }
 
-    /**
-     * TAIL: vanilla's tick body must run in full first; it routes reload
-     * errors into the pack rollback path and stamps fadeOutStart.
-     */
-    @Inject(method = "tick", at = @At("TAIL"))
-    private void skipFadeOut(CallbackInfo ci) {
-        if (ClearSightConfig.get().instantResourceReload && this.fadeOutStart > -1L) {
-            this.fadeOutStart = Util.getMillis() - 2000L;
-        }
+    // A divisor of at least 1 keeps the animation values finite; elapsed
+    // milliseconds over 1 blows straight past every fade threshold.
+    @ModifyConstant(method = "extractRenderState", constant = @Constant(floatValue = 1000.0F))
+    private float scaleFadeOut(float vanilla) {
+        return Math.max(1.0F, vanilla * clearsight$scale());
+    }
+
+    @ModifyConstant(method = "extractRenderState", constant = @Constant(floatValue = 500.0F))
+    private float scaleFadeIn(float vanilla) {
+        return Math.max(1.0F, vanilla * clearsight$scale());
+    }
+
+    @ModifyConstant(method = "isReadyToFadeOut", constant = @Constant(longValue = 1000L))
+    private long scaleMinimumHold(long vanilla) {
+        return (long) (vanilla * clearsight$scale());
     }
 }

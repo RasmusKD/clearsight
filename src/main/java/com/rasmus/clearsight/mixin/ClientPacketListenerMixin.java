@@ -43,7 +43,8 @@ public class ClientPacketListenerMixin {
     @Inject(method = "handleRespawn", at = @At("HEAD"))
     private void markRespawnTransition(ClientboundRespawnPacket packet, CallbackInfo ci) {
         LoadingGate.hideLevelLoad = LoadingGate.worldReady;
-        LoadingGate.raisedAt = net.minecraft.util.Util.getMillis();
+        LoadingGate.lastProgress = -1.0F;
+        LoadingGate.lastProgressAt = net.minecraft.util.Util.getMillis();
     }
 
     @Inject(method = "handleLogin", at = @At("HEAD"))
