@@ -43,19 +43,12 @@ public class ClearSightConfig implements ConfigData {
     public boolean clearNetherFog = false;
 
     @ConfigEntry.Category("loading")
-    @ConfigEntry.BoundedDiscrete(min = 0, max = 100)
     @ConfigEntry.Gui.Tooltip
-    public int bootFadeTime = 100;
+    public boolean instantResourceReload = false;
 
     @ConfigEntry.Category("loading")
-    @ConfigEntry.BoundedDiscrete(min = 0, max = 100)
     @ConfigEntry.Gui.Tooltip
-    public int reloadFadeTime = 100;
-
-    @ConfigEntry.Category("loading")
-    @ConfigEntry.BoundedDiscrete(min = 0, max = 100)
-    @ConfigEntry.Gui.Tooltip
-    public int titleFadeTime = 100;
+    public boolean hideTitleFade = false;
 
     @ConfigEntry.Category("loading")
     @ConfigEntry.Gui.Tooltip
