@@ -5,6 +5,7 @@
   "plugin": "com.rasmus.clearsight.ClearSightMixinPlugin",
   "compatibilityLevel": "JAVA_25",
   "client": [
+    "AmbientParticleMixin",
     "AtmosphericFogEnvironmentMixin",
     "BossHealthOverlayMixin",
     "ClientPacketListenerMixin",
@@ -15,12 +16,13 @@
     "GameRendererMixin",
     "GuiOverlayMixin",
     "HudOverlayMixin",
-    "LivingEntityMixin",
-    "WaterFogEnvironmentMixin",
+    "LandingParticleFixMixin",
     "LavaFogEnvironmentMixin",
     "LeavesBlockMixin",
+    "LivingEntityMixin",
     "PowderedSnowFogEnvironmentMixin",
     "ScreenMixin",
+    "WaterFogEnvironmentMixin",
     "WeatherEffectRendererMixin",
     "WeatherTickLegacyMixin",
     "WeatherTickModernMixin"

@@ -19,4 +19,14 @@ public final class ClearSightFog {
         fogData.renderDistanceStart = FAR_AWAY;
         fogData.renderDistanceEnd = FAR_AWAY + 1.0F;
     }
+
+    /**
+     * Only the close environmental planes. The render-distance planes stay,
+     * so the world still fades out at the horizon like the overworld instead
+     * of exposing raw chunk edges.
+     */
+    public static void clearEnvironmental(FogData fogData) {
+        fogData.environmentalStart = FAR_AWAY;
+        fogData.environmentalEnd = FAR_AWAY + 1.0F;
+    }
 }

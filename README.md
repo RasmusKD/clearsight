@@ -8,14 +8,15 @@ what goes. Nothing duplicates a vanilla option.
 
 - Effects: Warden darkness (fog + dimming, on by default), blindness fog,
   nausea distortion, your own potion particles (on by default)
-- Fog: clear water, lava and powder snow fog
+- Fog: clear water, lava, powder snow and nether fog
 - Screen: totem pop-up and burst (on by default), fire overlay height
   slider, hurt camera shake, pumpkin blur, frost edge, portal swirl and
   warp, spyglass circle, sleep fade
 - Menus: the dark tint behind menus, per kind (inventory, chests,
   workstations, villager trading, signs and books, pause menu, the rest)
 - World: rain and snow (splashes, leaf drips and sky gloom included),
-  elytra firework trail, boss fight darkening, F3+B sight lines
+  elytra firework trail, boss fight darkening, F3+B sight lines, biome
+  particles (white ash, ash and spores)
 
 Vanilla already has options for vignette, darkness pulsing, FOV effects,
 clouds, menu blur and lightning flashes, so those are not duplicated here.

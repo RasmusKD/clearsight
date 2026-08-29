@@ -38,6 +38,10 @@ public class ClearSightConfig implements ConfigData {
     @ConfigEntry.Gui.Tooltip
     public boolean clearPowderSnowFog = false;
 
+    @ConfigEntry.Category("fog")
+    @ConfigEntry.Gui.Tooltip
+    public boolean clearNetherFog = false;
+
     @ConfigEntry.Category("screen")
     @ConfigEntry.BoundedDiscrete(min = 0, max = 100)
     @ConfigEntry.Gui.Tooltip
@@ -114,6 +118,10 @@ public class ClearSightConfig implements ConfigData {
     @ConfigEntry.Category("world")
     @ConfigEntry.Gui.Tooltip
     public boolean hideBossDarkening = false;
+
+    @ConfigEntry.Category("world")
+    @ConfigEntry.Gui.Tooltip
+    public boolean hideBiomeParticles = false;
 
     public static void register() {
         AutoConfig.register(ClearSightConfig.class, GsonConfigSerializer::new);
