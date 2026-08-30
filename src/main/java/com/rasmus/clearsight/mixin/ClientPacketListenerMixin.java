@@ -38,6 +38,20 @@ public class ClientPacketListenerMixin {
         original.call(engine, entity, particle, count);
     }
 
+    // The mining fatigue curse itself and the warning sound both stay;
+    // only the fullscreen ghost flash is skipped.
+    @WrapOperation(method = "handleGameEvent", at = @At(value = "INVOKE",
+            target = "Lnet/minecraft/client/multiplayer/ClientLevel;addParticle(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V"))
+    private void skipElderGuardianJumpscare(net.minecraft.client.multiplayer.ClientLevel level,
+            ParticleOptions particle, double x, double y, double z,
+            double dx, double dy, double dz, Operation<Void> original) {
+        if (particle == ParticleTypes.ELDER_GUARDIAN
+                && ClearSightConfig.get().hideElderGuardianJumpscare) {
+            return;
+        }
+        original.call(level, particle, x, y, z, dx, dy, dz);
+    }
+
     // Only handleRespawn means a respawn or dimension change, and only one
     // after a finished load (worldReady): lobby servers force-respawn
     // during the initial join, and that screen must stay visible. Both

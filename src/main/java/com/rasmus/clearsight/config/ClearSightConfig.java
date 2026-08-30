@@ -26,6 +26,10 @@ public class ClearSightConfig implements ConfigData {
     @ConfigEntry.Gui.Tooltip
     public boolean hideEffectParticles = true;
 
+    @ConfigEntry.Category("effects")
+    @ConfigEntry.Gui.Tooltip
+    public boolean hideElderGuardianJumpscare = false;
+
     @ConfigEntry.Category("fog")
     @ConfigEntry.Gui.Tooltip
     public boolean clearWaterFog = false;
