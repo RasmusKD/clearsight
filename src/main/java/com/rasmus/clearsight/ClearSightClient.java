@@ -2,6 +2,7 @@ package com.rasmus.clearsight;
 
 import com.mojang.blaze3d.platform.InputConstants;
 import com.rasmus.clearsight.config.ClearSightConfig;
+import com.rasmus.clearsight.config.ClearSightGuiRegistry;
 import me.shedaniel.autoconfig.AutoConfigClient;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
@@ -16,6 +17,9 @@ public class ClearSightClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
+        // Must run before any config screen is built.
+        ClearSightGuiRegistry.register();
+
         // Unbound by default: bind it in Controls if you want quick access.
         KeyMapping openConfig = KeyMappingHelper.registerKeyMapping(new KeyMapping(
                 "key.clearsight.config", InputConstants.Type.KEYSYM,
