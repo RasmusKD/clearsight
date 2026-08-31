@@ -4,6 +4,8 @@ Client-side Fabric mod that removes things that block your view. Every
 removal is its own toggle in Mod Menu > Clear Sight, so you pick exactly
 what goes. Nothing duplicates a vanilla option.
 
+Toggles marked with an asterisk (*) require OP or singleplayer to use.
+
 ## Toggles
 
 - Effects: Warden darkness (fog + dimming, on by default), blindness fog,
@@ -22,13 +24,6 @@ what goes. Nothing duplicates a vanilla option.
 - World: rain and snow (splashes, leaf drips and sky gloom included),
   elytra firework trail, boss fight darkening, F3+B sight lines, biome
   particles (white ash, ash and spores)
-
-Toggles marked with an asterisk (*) only take effect in singleplayer, or
-on a server where you are an operator. Seeing through lava turns an opaque
-hazard into a window onto ores, mobs and players, which is a different
-thing from removing an overlay that only sits on your own screen. The
-toggle stays visible and keeps your setting either way, so it is clear why
-nothing changed rather than looking broken.
 
 Vanilla already has options for vignette, darkness pulsing, FOV effects,
 clouds, menu blur and lightning flashes, so those are not duplicated here.
