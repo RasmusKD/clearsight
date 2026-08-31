@@ -1,6 +1,7 @@
 package com.rasmus.clearsight.mixin;
 
 import com.rasmus.clearsight.ClearSightFog;
+import com.rasmus.clearsight.ClearSightGate;
 import com.rasmus.clearsight.config.ClearSightConfig;
 import net.minecraft.client.Camera;
 import net.minecraft.client.DeltaTracker;
@@ -18,7 +19,9 @@ public class LavaFogEnvironmentMixin {
     @Inject(method = "setupFog", at = @At("TAIL"))
     private void pushFogAway(FogData fogData, Camera camera, ClientLevel level,
             float renderDistance, DeltaTracker deltaTracker, CallbackInfo ci) {
-        if (ClearSightConfig.get().clearLavaFog) {
+        // Seeing through lava is a see-through toggle, so it is gated.
+        // See ClearSightGate.
+        if (ClearSightConfig.get().clearLavaFog && ClearSightGate.allowed()) {
             ClearSightFog.clear(fogData);
         }
     }
