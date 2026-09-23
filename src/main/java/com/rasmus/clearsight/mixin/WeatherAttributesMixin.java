@@ -15,10 +15,14 @@ import org.spongepowered.asm.mixin.injection.At;
  * client's level reports none here and every one of them stays at its
  * clear-weather value. Only the client level: the server, integrated one
  * included, has its own level and keeps the real weather.
+ *
+ * The target is an anonymous class, the most fragile kind of name, so these
+ * are require = 0: should a future version rename it, the attributes just
+ * follow the real weather again instead of crashing on world load.
  */
 @Mixin(targets = "net.minecraft.world.attribute.WeatherAttributes$WeatherAccess$1")
 public class WeatherAttributesMixin {
-    @WrapOperation(method = "rainLevel", at = @At(value = "INVOKE",
+    @WrapOperation(method = "rainLevel", require = 0, at = @At(value = "INVOKE",
             target = "Lnet/minecraft/world/level/Level;getRainLevel(F)F"))
     private float hideRainLevel(Level level, float partialTicks, Operation<Float> original) {
         if (level.isClientSide() && ClearSightConfig.get().hideWeather) {
@@ -27,7 +31,7 @@ public class WeatherAttributesMixin {
         return original.call(level, partialTicks);
     }
 
-    @WrapOperation(method = "thunderLevel", at = @At(value = "INVOKE",
+    @WrapOperation(method = "thunderLevel", require = 0, at = @At(value = "INVOKE",
             target = "Lnet/minecraft/world/level/Level;getThunderLevel(F)F"))
     private float hideThunderLevel(Level level, float partialTicks, Operation<Float> original) {
         if (level.isClientSide() && ClearSightConfig.get().hideWeather) {
