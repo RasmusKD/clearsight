@@ -21,6 +21,9 @@ Identical in both, but not where you'd expect:
   `LivingEntity.handleEntityEvent` is PORTAL particles.
 - Leaf drips in rain: `LeavesBlock.makeDrippingWaterParticles`, separate
   from both the rain rendering and the ground splashes.
+- Rain fog and the faded sun and moon: `AtmosphericFogEnvironment.updateRainFogState`
+  (the `rainFogMultiplier` field) and `SkyRenderer.extractRenderState`
+  (`SkyRenderState.rainBrightness`), same signatures in both.
 - F3+B arrows: `EntityHitboxDebugRenderer.showHitboxes` via `Gizmos.arrow`.
 - Vanilla already has settings for vignette, darkness pulsing, FOV
   effects, clouds, menu blur and lightning flashes (Accessibility).
