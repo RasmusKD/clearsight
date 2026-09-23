@@ -21,7 +21,8 @@ Toggles marked with an asterisk (*) require OP or singleplayer to use.
   spyglass circle, sleep fade
 - Menus: the dark tint behind menus, per kind (inventory, chests,
   workstations, villager trading, signs and books, pause menu, the rest)
-- World: rain and snow (splashes, leaf drips and sky gloom included),
+- World: rain and snow (splashes, leaf drips, rain fog and the gray sky,
+  dim light and hidden sun, moon and stars included),
   elytra firework trail, boss fight darkening, F3+B sight lines, biome
   particles (white ash, ash and spores)
 
