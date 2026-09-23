@@ -24,6 +24,10 @@ Identical in both, but not where you'd expect:
 - Rain fog and the faded sun and moon: `AtmosphericFogEnvironment.updateRainFogState`
   (the `rainFogMultiplier` field) and `SkyRenderer.extractRenderState`
   (`SkyRenderState.rainBrightness`), same signatures in both.
+- Weather's sky, fog, cloud, light and star attributes: `WeatherAttributes`
+  reads rain and thunder through the anonymous `WeatherAttributes$WeatherAccess$1`
+  (`rainLevel()`/`thunderLevel()` calling `Level.getRainLevel/getThunderLevel`),
+  identical in both.
 - F3+B arrows: `EntityHitboxDebugRenderer.showHitboxes` via `Gizmos.arrow`.
 - Vanilla already has settings for vignette, darkness pulsing, FOV
   effects, clouds, menu blur and lightning flashes (Accessibility).

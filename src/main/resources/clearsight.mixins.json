@@ -31,6 +31,7 @@
     "SkyRendererMixin",
     "TitleScreenMixin",
     "WaterFogEnvironmentMixin",
+    "WeatherAttributesMixin",
     "WeatherEffectRendererMixin",
     "WeatherTickLegacyMixin",
     "WeatherTickModernMixin"
