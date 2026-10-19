@@ -8,7 +8,7 @@ Read the `minecraft-mods` skill first (`C:\Users\Rasmus\.claude\skills\minecraft
 
 - Java 25: `JAVA_HOME=C:\Users\Rasmus\.jdks\jdk-25.0.3+9`, then `./gradlew build`. The jar is written to `build/libs/`.
 - No unit tests; the check is a clean build plus a run in a Modrinth App instance (see the skill).
-- One jar runs on 26.1.x and 26.2. Also compile against 26.2 before claiming support: `./gradlew build -Pminecraft_version=26.2 -Pfabric_version=0.158.0+26.2`. Renamed vanilla members are listed in `VERSIONS.md`; add new finds there.
+- Two jars: `./gradlew build` (26.1.x and 26.2, name `clearsight-X.Y.Z+26.1.jar`) and `./gradlew build -PmcTarget=26.3` (`+26.3`). The Legacy mixins import 26.1-only classes, so the source no longer compiles against 26.2; check the +26.1 jar against 26.2 with `linkcheck.py` (see VERSIONS.md) instead. Renamed vanilla members are listed in `VERSIONS.md`; add new finds there.
 - Mixin pairs for renamed classes are selected by `ClearSightMixinPlugin`; hooks that cannot apply on an unknown MC version switch themselves off.
 
 ## Release

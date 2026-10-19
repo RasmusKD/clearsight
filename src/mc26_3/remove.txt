@@ -1,0 +1,6 @@
+# 26.1 only: the Gui-era twins of the modern mixins
+java/com/rasmus/clearsight/mixin/GuiOverlayMixin.java
+java/com/rasmus/clearsight/mixin/FireOverlayLegacyMixin.java
+java/com/rasmus/clearsight/mixin/ShieldLegacyMixin.java
+java/com/rasmus/clearsight/mixin/WeatherTickLegacyMixin.java
+java/com/rasmus/clearsight/mixin/ShieldModernMixin.java

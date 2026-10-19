@@ -22,8 +22,7 @@ public class ClearSightClient implements ClientModInitializer {
 
         // Unbound by default: bind it in Controls if you want quick access.
         KeyMapping openConfig = KeyMappingHelper.registerKeyMapping(new KeyMapping(
-                "key.clearsight.config", InputConstants.Type.KEYSYM,
-                InputConstants.UNKNOWN.getValue(), CATEGORY));
+                "key.clearsight.config", InputConstants.UNKNOWN.getValue(), CATEGORY));
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             while (openConfig.consumeClick()) {

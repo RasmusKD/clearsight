@@ -38,3 +38,24 @@ Verifying: both mojmap jars sit in
 Run `javap -p` against BOTH before referencing anything directly. Before a
 release, audit every `net/minecraft` reference in the built jar the same
 way. 2.5.2 crashed on 26.2 because only one class got audited.
+
+## 26.3 is a separate jar
+
+`./gradlew build` produces `clearsight-X.Y.Z+26.1.jar` (26.1.x and 26.2). `./gradlew build -PmcTarget=26.3`
+produces `clearsight-X.Y.Z+26.3.jar` (pins in `gradle-26.3.properties`). Files under `src/mc26_3/java` and
+`src/mc26_3/resources` replace the same-named file of `src/main`; `src/mc26_3/remove.txt` lists main
+files the 26.3 jar drops. `verifyMixinClasses` (part of `check`) fails when a mixins.json entry has no
+class in that variant. Check each jar against the Minecraft versions it claims without starting the game:
+`python C:\Users\Rasmus\.claude\skills\minecraft-mods\scripts\linkcheck.py <jar> <mapped minecraft jar>`
+(plugin-gated twins report as missing on the other version; that is expected).
+
+| What | 26.1/26.2 | 26.3 | Fix |
+|---|---|---|---|
+| `InputConstants.Type.KEYSYM` | exists | now `KEYBOARD` | `new KeyMapping(String, int, Category)`, exists on all three |
+| `GpuTexture` | `com.mojang.blaze3d.textures` | `com.mojang.renderpearl.api.textures` | `var` in `FrozenFrame.capture`, no import |
+| `GameRenderer.displayItemActivation` | on GameRenderer | `LocalPlayer.displayItemActivation` | `LocalPlayerItemActivationMixin` + 26.3 `GameRendererMixin` in `src/mc26_3` |
+| Portal warp read | `LocalPlayer.portalEffectIntensity`, `oPortalEffectIntensity` in `GameRenderer.tick/renderLevel` | `PlayerRenderState.portalEffectIntensity` in `renderLevel()` | 26.3 `GameRendererMixin` redirect |
+| `ItemInHandRenderer` (shield height) | exists | replaced by `FirstPersonHandsAndItemsRenderer`, item drawn via `ItemStackRenderState.submit` | OPEN: `shieldHeight` does nothing on 26.3; the port needs a runtime test |
+| Loading hooks (reload fade, level loading, title, reconfigure freeze) | on | plugin keeps them OFF on 26.3 (`knownLoadingVersion`) until a runtime test confirms the injection points | OPEN: runtime test, then add 26.3 to the plugin |
+
+Full 26.3 table: `C:\Users\Rasmus\Desktop\Ny mappe (3)\mc-26.3-splits.md`.

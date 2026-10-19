@@ -2,7 +2,6 @@ package com.rasmus.clearsight;
 
 import com.mojang.blaze3d.pipeline.RenderTarget;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.textures.GpuTexture;
 import java.lang.reflect.Method;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
@@ -59,7 +58,7 @@ public final class FrozenFrame {
         Minecraft minecraft = Minecraft.getInstance();
         try {
             RenderTarget target = resolveTarget(minecraft);
-            GpuTexture source = target.getColorTexture();
+            var source = target.getColorTexture(); // type moved packages in 26.3
             if (source == null) {
                 return;
             }
