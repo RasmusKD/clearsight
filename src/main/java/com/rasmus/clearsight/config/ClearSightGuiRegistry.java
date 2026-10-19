@@ -1,6 +1,7 @@
 package com.rasmus.clearsight.config;
 
 import com.rasmus.clearsight.ClearSightGate;
+import com.rasmus.clearsight.ClearSightMixinPlugin;
 import java.util.Collections;
 import java.util.List;
 import me.shedaniel.autoconfig.AutoConfigClient;
@@ -29,6 +30,12 @@ public final class ClearSightGuiRegistry {
         registry.registerPredicateProvider(
                 ClearSightGuiRegistry::gatedToggle,
                 field -> "clearLavaFog".equals(field.getName()));
+        if (!ClearSightMixinPlugin.shieldHookAvailable()) {
+            // Keep the saved value in the file, just do not offer a dead option.
+            registry.registerPredicateProvider(
+                    (i18n, field, config, defaults, access) -> Collections.emptyList(),
+                    field -> "shieldHeight".equals(field.getName()));
+        }
     }
 
     private static List<AbstractConfigListEntry> gatedToggle(

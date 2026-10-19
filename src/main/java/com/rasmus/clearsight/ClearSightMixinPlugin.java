@@ -28,6 +28,17 @@ public class ClearSightMixinPlugin implements IMixinConfigPlugin {
     private static boolean knownLoadingVersion() {
         String version = FabricLoader.getInstance().getModContainer("minecraft")
                 .map(c -> c.getMetadata().getVersion().getFriendlyString()).orElse("");
+        return version.startsWith("26.1") || version.startsWith("26.2") || version.startsWith("26.3");
+    }
+
+    /**
+     * The raised-shield hook exists on 26.1 and 26.2 only: 26.3 replaced the
+     * first-person item renderer it patches, so the config hides the option
+     * there instead of offering a toggle that does nothing.
+     */
+    public static boolean shieldHookAvailable() {
+        String version = FabricLoader.getInstance().getModContainer("minecraft")
+                .map(c -> c.getMetadata().getVersion().getFriendlyString()).orElse("");
         return version.startsWith("26.1") || version.startsWith("26.2");
     }
 

@@ -55,7 +55,7 @@ class in that variant. Check each jar against the Minecraft versions it claims w
 | `GpuTexture` | `com.mojang.blaze3d.textures` | `com.mojang.renderpearl.api.textures` | `var` in `FrozenFrame.capture`, no import |
 | `GameRenderer.displayItemActivation` | on GameRenderer | `LocalPlayer.displayItemActivation` | `LocalPlayerItemActivationMixin` + 26.3 `GameRendererMixin` in `src/mc26_3` |
 | Portal warp read | `LocalPlayer.portalEffectIntensity`, `oPortalEffectIntensity` in `GameRenderer.tick/renderLevel` | `PlayerRenderState.portalEffectIntensity` in `renderLevel()` | 26.3 `GameRendererMixin` redirect |
-| `ItemInHandRenderer` (shield height) | exists | replaced by `FirstPersonHandsAndItemsRenderer`, item drawn via `ItemStackRenderState.submit` | OPEN: `shieldHeight` does nothing on 26.3; the port needs a runtime test |
-| Loading hooks (reload fade, level loading, title, reconfigure freeze) | on | plugin keeps them OFF on 26.3 (`knownLoadingVersion`) until a runtime test confirms the injection points | OPEN: runtime test, then add 26.3 to the plugin |
+| `ItemInHandRenderer` (shield height) | exists | replaced by `FirstPersonHandsAndItemsRenderer`, item drawn via `ItemStackRenderState.submit` | `shieldHeight` does nothing on 26.3, so `ClearSightGuiRegistry` hides the option there (`ClearSightMixinPlugin.shieldHookAvailable`); the saved value stays in the file |
+| Loading hooks (reload fade, level loading, title, reconfigure freeze) | on | the same hooks apply unchanged on 26.3 (no mixin error at startup, `defaultRequire` 1; 26.3 is in `knownLoadingVersion`) | Overlay behaviour (reload fade, respawn screen) not visually checked on 26.3 |
 
 Full 26.3 table: `C:\Users\Rasmus\Desktop\Ny mappe (3)\mc-26.3-splits.md`.
